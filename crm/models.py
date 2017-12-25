@@ -9,7 +9,7 @@ class Department(models.Model):
     销售      1001
     """
     title = models.CharField(verbose_name='部门名称', max_length=16)
-    code = models.IntegerField(verbose_name='部门编号',unique=True,null=False)
+    code = models.IntegerField(verbose_name='部门编号',unique=True,null=False, primary_key=True)
 
     def __str__(self):
         return self.title
@@ -24,6 +24,11 @@ class UserInfo(models.Model):
     username = models.CharField(verbose_name='用户名', max_length=32)
     password = models.CharField(verbose_name='密码', max_length=64)
     email = models.EmailField(verbose_name='邮箱', max_length=64)
+    gender_choices = (
+        (1, '男'),
+        (2, '女'),
+    )
+    gender = models.IntegerField(verbose_name='性别', choices=gender_choices)
 
     depart = models.ForeignKey(verbose_name='部门', to="Department",to_field="code")
 
@@ -75,8 +80,8 @@ class ClassList(models.Model):
     start_date = models.DateField(verbose_name="开班日期")
     graduate_date = models.DateField(verbose_name="结业日期", null=True, blank=True)
     memo = models.CharField(verbose_name='说明', max_length=256, blank=True, null=True, )
-    teachers = models.ManyToManyField(verbose_name='任课老师', to='UserInfo', related_name='teach_classes')
-    tutor = models.ForeignKey(verbose_name='班主任', to='UserInfo', related_name='classes')
+    teachers = models.ManyToManyField(verbose_name='任课老师', to='UserInfo', related_name='teach_classes',limit_choices_to={'depart_id':1})
+    tutor = models.ForeignKey(verbose_name='班主任', to='UserInfo', related_name='classes',limit_choices_to={'depart_id':2})
 
     def __str__(self):
         return "{0}({1}期)".format(self.course.name, self.semester)
@@ -164,7 +169,7 @@ class Customer(models.Model):
         default=2,
         help_text=u"选择客户此时的状态"
     )
-    consultant = models.ForeignKey(verbose_name="课程顾问", to='UserInfo', related_name='consultant',limit_choices_to={'depart_id':1001})
+    consultant = models.ForeignKey(verbose_name="课程顾问", to='UserInfo', related_name='consultant',limit_choices_to={'depart_id':1})
     date = models.DateField(verbose_name="咨询日期", auto_now_add=True)
     last_consult_date = models.DateField(verbose_name="最后跟进日期", auto_now_add=True)
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="db" uuid="a1586ce5-1771-4b03-93f5-fc367b85c3ec">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>0056a176-1da7-49cb-a5ed-19f7f35280e8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>SQLite</remarks>
@@ -33,7 +33,7 @@
       </libraries>
     </data-source>
     <data-source source="LOCAL" name="db [2]" uuid="37492054-6e5f-4b27-aabb-8e78a9b4be4a">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>0056a176-1da7-49cb-a5ed-19f7f35280e8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>SQLite</remarks>
@@ -66,6 +66,25 @@
         </library>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/sqlite-jdbc-3.8.11.2.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="db [3]" uuid="3ca1722f-465f-479e-88bc-a085de637f58">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>SQLite</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\ASUS\PycharmProjects\untitled\October\day108课上所有(搜索增删改查，分页，popup)\s6day103\db.sqlite3</jdbc-url>
+      <driver-properties>
+        <property name="enable_load_extension" value="true" />
+      </driver-properties>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.16.1/sqlite-jdbc-3.16.1.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.16.1/xerial-sqlite-license.txt</url>
         </library>
       </libraries>
     </data-source>

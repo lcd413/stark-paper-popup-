@@ -23,19 +23,21 @@
 <body>
     <div class="container">
     <h1>列表页面</h1>
-    <div class="list-filter">
-        {% for filter_row in  cl.gen_comb_filter %}
-            <div>
-                {% for col in filter_row  %}
-                    {{ col }}
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
+    {% if cl.show_comb_filter %}
+        <div class="list-filter">
+            {% for filter_row in  cl.gen_comb_filter %}
+                <div>
+                    {% for col in filter_row  %}
+                        {{ col }}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
 
     {% if cl.show_search_form %}
-        <div class="form-group">
+        <div class="form-group" style="float: right">
             <form method="get">
                 <input name="{{ cl.config.search_key }}" value="{{ cl.search_form_val }}" class="form-control" placeholder="请输入搜索条件" type="text"  style="display:inline-block;width: 200px;"/>
                 <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
@@ -43,8 +45,11 @@
             </form>
         </div>
     {% endif %}
+
     {% if cl.show_add_btn %}
-        <a class="btn btn-primary" href="{{ cl.add_url }}">添加</a>
+        <div style="margin: 5px 0">
+            <a class="btn btn-success" href="{{ cl.add_url }}">添加</a>
+        </div>
     {% endif %}
 
     <form method="post">
